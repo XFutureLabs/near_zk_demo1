@@ -1,0 +1,8 @@
+{
+  "name": "near_zk_demo1",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "circomlib": "^2.0.5"
+  }
+}

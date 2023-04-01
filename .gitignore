@@ -1,0 +1,11 @@
+target
+res
+node_modules
+circuits/*
+!circuits/tree.circom
+!circuits/update_input.json
+!circuits/update.circom
+!circuits/recover_input.json
+!circuits/recover.circom
+!circuits/pot14_final.ptau
+!circuits/Makefile
