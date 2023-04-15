@@ -11,6 +11,11 @@ near_zk_demo1: contracts/near_zk_demo1
 circuit:
 	npm install && cd circuits && make
 
+test: near_zk_demo1 circuit
+	cargo test
+
 clean:
 	cargo clean
 	rm -rf res/
+	rm -rf node_modules/
+	rm -rf circuits/out

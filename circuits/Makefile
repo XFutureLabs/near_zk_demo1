@@ -1,17 +1,19 @@
 build: update recover
 
 update:
-	circom update.circom --r1cs --wasm --sym 
-	snarkjs groth16 setup update.r1cs pot14_final.ptau update_0000.zkey
-	snarkjs zkey export verificationkey update_0000.zkey update_verification_key.json
+	mkdir -p out
+	circom update.circom --r1cs --wasm --sym -o out
+	snarkjs groth16 setup out/update.r1cs pot14_final.ptau out/update_0000.zkey
+	snarkjs zkey export verificationkey out/update_0000.zkey out/update_verification_key.json
 
-	node update_js/generate_witness.js update_js/update.wasm update_input.json update_witness.wtns
-	snarkjs groth16 prove update_0000.zkey update_witness.wtns update_proof.json update_public.json
+	node out/update_js/generate_witness.js out/update_js/update.wasm update_input.json out/update_witness.wtns
+	snarkjs groth16 prove out/update_0000.zkey out/update_witness.wtns out/update_proof.json out/update_public.json
 
 recover:
-	circom recover.circom --r1cs --wasm --sym 
-	snarkjs groth16 setup recover.r1cs pot14_final.ptau recover_0000.zkey
-	snarkjs zkey export verificationkey recover_0000.zkey recover_verification_key.json
+	mkdir -p out
+	circom recover.circom --r1cs --wasm --sym -o out
+	snarkjs groth16 setup out/recover.r1cs pot14_final.ptau out/recover_0000.zkey
+	snarkjs zkey export verificationkey out/recover_0000.zkey out/recover_verification_key.json
 
-	node recover_js/generate_witness.js recover_js/recover.wasm recover_input.json recover_witness.wtns
-	snarkjs groth16 prove recover_0000.zkey recover_witness.wtns recover_proof.json recover_public.json
+	node out/recover_js/generate_witness.js out/recover_js/recover.wasm recover_input.json out/recover_witness.wtns
+	snarkjs groth16 prove out/recover_0000.zkey out/recover_witness.wtns out/recover_proof.json out/recover_public.json

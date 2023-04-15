@@ -19,9 +19,9 @@ pub async fn initialize_contracts_and_users(
         .await?
         .unwrap();
 
-    let update_verification_key_string = std::fs::read_to_string("../../circuits/update_verification_key.json")
+    let update_verification_key_string = std::fs::read_to_string("../../circuits/out/update_verification_key.json")
         .expect("Invalid withdraw verification key file path");
-    let recover_verification_key_string = std::fs::read_to_string("../../circuits/recover_verification_key.json")
+    let recover_verification_key_string = std::fs::read_to_string("../../circuits/out/recover_verification_key.json")
         .expect("Invalid split verification key file path");
 
     near_zk_demo1_contract.call(worker, "new")
