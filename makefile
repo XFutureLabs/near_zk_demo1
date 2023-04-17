@@ -12,7 +12,7 @@ circuit:
 	npm install && cd circuits && make
 
 test: near_zk_demo1 circuit
-	cargo test
+	cargo test -- --nocapture
 
 clean:
 	cargo clean
